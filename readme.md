@@ -44,7 +44,7 @@ see Helper functions below. Isn't that convenient?
 ### Get all info as returned by Vimeo
 See [Vimeo Video API reference][link-video]
 ```php
-use Eleven59\VimeoConnector\Models\VimeoConnector;
+use Eleven59\VimeoConnector\VimeoConnector;
 $video = VimeoConnector::getInfo($vimeoId);
 ```
 
@@ -52,7 +52,7 @@ $video = VimeoConnector::getInfo($vimeoId);
 Instead of processing all that info yourself every time, why not use the built-in complementary
 function for that?
 ```php
-use Eleven59\VimeoConnector\Models\VimeoConnector;
+use Eleven59\VimeoConnector\VimeoConnector;
 $stills = VimeoConnector::getStills($vimeoId);
 ```
 
@@ -62,8 +62,8 @@ image on the block? This one returns the still that matches both the width and h
 video. It's probably the biggest and the best match. I know that's not always the best option,
 but it's a great approximation and there's always the function above if you need more nuance.
 ```php
-use Eleven59\VimeoConnector\Models\VimeoConnector;
-$stills = VimeoConnector::getCover($vimeoId);
+use Eleven59\VimeoConnector\VimeoConnector;
+$cover = VimeoConnector::getCover($vimeoId);
 ```
 
 
@@ -79,7 +79,7 @@ an ID no matter if you use a video or event URL. If you need to validate that th
 a video *or* an event, you are very welcome to try the separate functions instead.
 
 ```php
-use Eleven59\VimeoConnector\Models\VimeoHelper;
+use Eleven59\VimeoConnector\VimeoHelper;
 $id = VimeoHelper::getIdFromUrl($url); // returns event or video Id or false
 $eventId = VimeoHelper::getEventIdFromUrl($url); // returns event Id or false
 $videoId = VimeoHelper::getVideoIdFromUrl($url); // returns video Id or false
@@ -91,7 +91,7 @@ If you have either an Id or a full-fledged URL or even an embed code, these func
 translate any of those into either a Video URL or Ember URL, no questions asked.
 
 ```php
-use Eleven59\VimeoConnector\Models\VimeoHelper;
+use Eleven59\VimeoConnector\VimeoHelper;
 $embedUrl = VimeoHelper::getEmbedUrl($urlOrId); // works for events and videos (returns event url if numeric input is given)
 $eventEmbedUrl = VimeoHelper::getEventEmbedUrl($urlOrId); // works only for events
 $videoEmbedUrl = VimeoHelper::getVideoEmbedUrl($urlOrId); // works only for videos
